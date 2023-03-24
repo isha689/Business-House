@@ -1,7 +1,7 @@
 package main.java.com.game;
 
 import main.java.com.game.board.Board;
-import main.java.com.game.board.Player;
+import main.java.com.game.board.entity.Player;
 import main.java.com.game.board.box.Box;
 import javafx.util.Pair;
 

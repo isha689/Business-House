@@ -1,6 +1,9 @@
 package main.java.com.game.board;
 
+import main.java.com.game.board.entity.Bank;
+import main.java.com.game.board.entity.Player;
 import main.java.com.game.board.box.Box;
+import main.java.com.game.board.box.EmptyBox;
 import main.java.com.game.board.box.Hotel.Hotel;
 import main.java.com.game.board.box.Jail;
 import main.java.com.game.board.box.Lottery;
@@ -47,7 +50,7 @@ public class Board {
                 gameBoard[i] = new Lottery();
             }
             else if(cells[i].equals("E")){
-                gameBoard[i] = new Box();
+                gameBoard[i] = new EmptyBox();
             }
             else if(cells[i].equals("H")){
                 gameBoard[i] = new Hotel();

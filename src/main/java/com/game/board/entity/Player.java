@@ -1,53 +1,46 @@
-package main.java.com.game.board;
+package main.java.com.game.board.entity;
 
 import main.java.com.game.board.box.Hotel.Hotel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
-    static int USER_MONEY = 1000;
+public class Player extends Entity {
+    private final int USER_MONEY = 1000;
     int playerID;
     int position;
-    int money;
-    boolean hasWon;
     List<Hotel> assets;
 
     public Player(int id){
         this.playerID = id;
-        position = -1;
-        hasWon = false;
-        money = USER_MONEY;
-        assets = new ArrayList<>();
+        this.position = -1;
+        this.money = USER_MONEY;
+        this.assets = new ArrayList<>();
     }
 
-    public int getMoney(){
-        return this.money;
-    }
-    public void addMoney(int amt){
-        money+=amt;
-    }
-    public boolean deductMoney(int amt){
-        if(amt>this.money) {
+    @Override
+    public boolean deductMoney(int amount){
+        boolean canDeduct = super.deductMoney(amount);
+        if(!canDeduct){
             System.out.println("Player " + this.playerID + " has no enough money. Removing Player "+ this.playerID + " from the game.");
-            return false;
         }
-        money-=amt;
-        return true;
+        return canDeduct;
     }
+
     public void setPosition(int pos){
-        position = pos;
+        this.position = pos;
     }
+
     public int getPosition(){
-        return position;
+        return this.position;
     }
 
     public void buyHotel(Hotel hotel){
-        assets.add(hotel);
+        this.assets.add(hotel);
     }
 
     public int getId() {
-        return playerID;
+        return this.playerID;
     }
 
     public int getAssetsValue(){
